@@ -1,6 +1,6 @@
-import { Track } from "../model/Track";
-import { Artist } from "../model/Artist";
-import { UserProfile } from "../model/UserProfile";
+import { Track } from "../models/Track";
+import { Artist } from "../models/artist";
+import { UserProfile } from "../models/userProfile";
 
 export enum TimeFrame {
     short_term = "short_term",

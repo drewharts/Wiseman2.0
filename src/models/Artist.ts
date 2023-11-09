@@ -1,4 +1,4 @@
-import { Image } from "./Image";
+import { Image } from "./image";
 
 export type Artist = {
     external_urls: any;

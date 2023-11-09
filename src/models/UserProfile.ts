@@ -1,6 +1,6 @@
-import { Image } from "./Image";
+import { Image } from "./image";
 
-export type userProfile = {
+export type UserProfile = {
     country: string;
     display_name: string;
     email: string;

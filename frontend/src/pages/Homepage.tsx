@@ -1,18 +1,23 @@
 import React from 'react';
-import Photo from '../components/Photo'; // Adjust the path as per your project structure
+import Photo from '../components/Photo';
+import GithubBox from '../components/GithubBox'
 
 const Homepage = () => {
+  const imageUrls = [
+    "https://s3.us-west-1.amazonaws.com/wiseman2.0images/03400013.jpg",
+    "https://s3.us-west-1.amazonaws.com/wiseman2.0images/hartsfield006978-r1-066-31a.jpg",
+    "https://s3.us-west-1.amazonaws.com/wiseman2.0images/hartsfield009933-r1-055-26.jpg"
+  ];
+
+
   return (
-    <div>
-      <Photo url="https://s3.us-west-1.amazonaws.com/wiseman2.0images/hartsfield006978-r1-066-31a.jpg" alt="Descriptive Alt Text" />
-      <div className="content">
-        {/* Your homepage content goes here */}
-        <h1>Welcome to My Website</h1>
-        <p>This is the homepage of my personal website.</p>
-        {/* Other components and content */}
-      </div>
+    <div className="homepage-container">
+      <Photo urls={imageUrls} alt="Background Image" />
+      <GithubBox />
+      {/* Other components */}
     </div>
   );
 };
 
 export default Homepage;
+

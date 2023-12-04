@@ -9,8 +9,7 @@ function App() {
     <ChakraProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<TopArtistList />} />
-          <Route path ='/home' element={<Homepage /> } />
+          <Route path ='/' element={<Homepage /> } />
         </Routes>
       </BrowserRouter>
     </ChakraProvider>

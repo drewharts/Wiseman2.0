@@ -1,4 +1,4 @@
-import { Artists } from "./artists";
+import { Artists } from "./Artists";
 
 export interface ArtistResponse {
     items: Artists[];

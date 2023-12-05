@@ -1,8 +1,6 @@
-import React , {useState} from 'react';
 import Photo from '../components/Photo';
 import GithubBox from '../components/GithubBox';
-import SpotifyBox from '../components/SpotifyBox';
-import { useDisclosure, Text } from "@chakra-ui/react";
+import { useDisclosure } from "@chakra-ui/react";
 import AboutMeModal from '../components/AboutMe';
 import SpotifyPopUp from '../components/SpotifyPopUp';
 

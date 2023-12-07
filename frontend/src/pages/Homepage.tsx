@@ -1,5 +1,4 @@
 import Photo from '../components/Photo';
-import GithubBox from '../components/GithubBox';
 import { useDisclosure } from "@chakra-ui/react";
 import AboutMeModal from '../components/AboutMe';
 import SpotifyPopUp from '../components/SpotifyPopUp';

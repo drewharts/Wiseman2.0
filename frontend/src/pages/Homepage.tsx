@@ -28,7 +28,6 @@ const Homepage = () => {
                 <div onClick={spotifyDisclosure.onOpen} style={{ cursor: 'pointer', position: 'absolute', top: 200, left: 200 }}>
                     <img src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/WhatImListeningTo.png" alt="Logo" style={{ maxWidth: '350px', maxHeight: '350px' }} />
                 </div>
-            <GithubBox />
 
         </div>
 

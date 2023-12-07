@@ -6,6 +6,7 @@ import SpotifyPopUp from '../components/SpotifyPopUp';
 const Homepage = () => {
     const aboutMeDisclosure = useDisclosure();
     const spotifyDisclosure = useDisclosure();
+    const myProjectsDisclosure = useDisclosure();
 
     const imageUrls = [
         "https://s3.us-west-1.amazonaws.com/wiseman2.0images/03400013.jpg",
@@ -27,12 +28,25 @@ const Homepage = () => {
                 <div onClick={spotifyDisclosure.onOpen} style={{ cursor: 'pointer', position: 'absolute', top: 200, left: 200 }}>
                     <img src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/WhatImListeningTo.png" alt="Logo" style={{ maxWidth: '350px', maxHeight: '350px' }} />
                 </div>
+                <div onClick={aboutMeDisclosure.onOpen} style={{ cursor: 'pointer', position: 'absolute', top: 80, left: 250 }}>
+                    <img src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/aboutme.png" alt="Logo" style={{ maxWidth: '125px', maxHeight: '125px' }} />
+                </div>
+                <div onClick={() => {
+                    myProjectsDisclosure.onOpen();
+                    window.location.href = 'https://github.com/drewharts';
+                }} 
+                style={{ cursor: 'pointer', position: 'absolute', top: 400, left: 400 }}>
+                <img src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/MyProjects.png" alt="Logo" style={{ maxWidth: '350px', maxHeight: '350px' }} />
+                </div>
+                
+        
 
         </div>
 
             
             <AboutMeModal isOpen={aboutMeDisclosure.isOpen} onClose={aboutMeDisclosure.onClose} />
             <SpotifyPopUp isOpen={spotifyDisclosure.isOpen} onClose={spotifyDisclosure.onClose} songs={[]} />
+
         </div>
     );
 };

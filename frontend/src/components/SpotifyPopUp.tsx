@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Text, Box } from '@chakra-ui/react';
+import TopArtistList from './TopArtistList'
 
 // Define a type for individual song
 interface Song {
@@ -18,8 +19,8 @@ const RecentMusicPopup: React.FC<RecentMusicPopupProps> = ({ isOpen, onClose, so
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>Recently Played Songs</ModalHeader>
+      <ModalContent maxWidth = '1000px'>
+        <ModalHeader>My favorite Artists (live from Spotify)</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           {songs && songs.map((song, index) => (
@@ -28,10 +29,13 @@ const RecentMusicPopup: React.FC<RecentMusicPopupProps> = ({ isOpen, onClose, so
               <Text>{song.title}</Text>
             </Box>
           ))}
+          {/* Here we include the TopArtistList component */}
+          <TopArtistList />
         </ModalBody>
       </ModalContent>
     </Modal>
   );
 }
+
 
 export default RecentMusicPopup;

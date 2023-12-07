@@ -40,7 +40,7 @@ const ArtistList = () => {
             />
           )}
           <Box flex="1">
-            <Link href={artist.spotifyUrl} isExternal>
+            <Link href={artist.external_urls.spotify} isExternal>
               <Text fontWeight="bold">{artist.name}</Text>
             </Link>
             {/* Include other artist details here */}

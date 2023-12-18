@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import { useDisclosure, useMediaQuery } from "@chakra-ui/react";
 import Photo from '../components/Photo';
+import '../index.css'
 import AboutMeModal from '../components/AboutMe';
 import SpotifyPopUp from '../components/SpotifyPopUp';
 
@@ -61,7 +62,12 @@ const Homepage = () => {
         <div>
             {/* Clickable logo that takes user to about me */}
             <div onClick={aboutMeDisclosure.onOpen} style={{ cursor: 'pointer', position: 'absolute', top: 20, left: 20 }}>
-                <img src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/DrewLogoPNG.png" alt="Logo" style={{ maxWidth: '350px', maxHeight: '350px' }} />
+                <img 
+                    src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/DrewLogoPNG.png" 
+                    alt="Logo" 
+                    className='image-hover-effect'
+                    style={{ maxWidth: '350px', maxHeight: '350px' }} 
+                    />
             </div>
 
             {/* If User is on mobile then swtich formatting of background photos */}
@@ -80,17 +86,26 @@ const Homepage = () => {
             )}
             {/* Spotify pop up */}
             <div onClick={spotifyDisclosure.onOpen} style={{ cursor: 'pointer', position: 'absolute', top: 200, left: 200 }}>
-                <img src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/WhatImListeningTo.png" alt="Logo" style={{ maxWidth: '350px', maxHeight: '350px' }} />
+                <img 
+                    src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/WhatImListeningTo.png" 
+                    alt="Logo" 
+                    className = 'image-hover-effect'
+                    style={{ maxWidth: '350px', maxHeight: '350px' }} />
             </div>
             {/* About me tab */}
             <div onClick={aboutMeDisclosure.onOpen} style={{ cursor: 'pointer', position: 'absolute', top: 80, left: 250 }}>
-                <img src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/aboutme.png" alt="Logo" style={{ maxWidth: '125px', maxHeight: '125px' }} />
+                <img 
+                    src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/aboutme.png" 
+                    alt="Logo" 
+                    className='image-hover-effect'
+                    style={{ maxWidth: '125px', maxHeight: '125px' }} />
             </div>
 
              {/* If the user is on mobile then add a swipe icon to help with usability */}
             {isMobile && (
                 <div style={{ cursor: 'pointer', position: 'absolute', top: 650, left: 25 }}>
-                    <img src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/mobileBackground/swipe.png" alt="Swipe Icon" style={{ maxWidth: '200px', maxHeight: '200px' }} />
+                    <img 
+                        src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/mobileBackground/swipe.png" alt="Swipe Icon" style={{ maxWidth: '200px', maxHeight: '200px' }} />
                 </div>
             )}
 
@@ -100,7 +115,11 @@ const Homepage = () => {
                 window.location.href = 'https://github.com/drewharts';
             }} 
             style={{ cursor: 'pointer', position: 'absolute', top: 400, left: 400 }}>
-                <img src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/MyProjects.png" alt="Logo" style={{ maxWidth: '350px', maxHeight: '350px' }} />
+                <img 
+                    src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/MyProjects.png" 
+                    alt="Logo" 
+                    className = 'image-hover-effect'
+                    style={{ maxWidth: '350px', maxHeight: '350px' }} />
             </div>
             {/* External link to my medium */}
             <div onClick={() => {
@@ -108,7 +127,11 @@ const Homepage = () => {
                 window.location.href = 'https://medium.com/@drewharts8';
             }} 
             style={{ cursor: 'pointer', position: 'absolute', top: 300, left: 900 }}>
-                <img src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/myArcticles.png" alt="Logo" style={{ maxWidth: '200px', maxHeight: '200px' }} />
+                <img 
+                    src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/myArcticles.png" 
+                    alt="Logo" 
+                    className = 'image-hover-effect'
+                    style={{ maxWidth: '200px', maxHeight: '200px' }} />
             </div>
             
             {/* Allows for viewing/download of my resume from S3 bucket */}
@@ -117,7 +140,11 @@ const Homepage = () => {
                 window.open('https://s3.us-west-1.amazonaws.com/wiseman2.0images/DrewHartsfieldNov16.pdf', '_blank');
             }} 
             style={{ cursor: 'pointer', position: 'absolute', top: 500, left: 1200 }}>
-                <img src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/+Resume.png" alt="Logo" style={{ maxWidth: '150px', maxHeight: '150px' }} />
+                <img 
+                    src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/+Resume.png" 
+                    alt="Logo" 
+                    className='image-hover-effect'
+                    style={{ maxWidth: '150px', maxHeight: '150px' }} />
             </div>
             
             {/* opens and closes chakra pop ups */}

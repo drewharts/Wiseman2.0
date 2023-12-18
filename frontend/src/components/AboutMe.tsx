@@ -8,8 +8,10 @@ import {
   Text,
   VStack,
   Box,
-  Link // Import the Link component
+  Link,
+  HStack
 } from "@chakra-ui/react";
+import {FaLinkedin, FaInstagram, FaTwitter, FaTiktok} from 'react-icons/fa'
 
 interface AboutMeModalProps {
     isOpen: boolean;
@@ -37,6 +39,20 @@ const AboutMeModal = ({ isOpen, onClose }: AboutMeModalProps) => {
               on it <Link href="https://medium.com/@drewharts8/how-to-incentivize-learning-from-first-principles-ae59446df41c" isExternal color="blue.500">here</Link>.
             </Text>
             {/* Social media links can go here */}
+            <HStack spacing={4}>
+              <Link href="https://www.linkedin.com/in/drewhartsfield" isExternal>
+                <FaLinkedin size="24px" />
+              </Link>
+              <Link href="https://www.instagram.com/drewhartss" isExternal>
+                <FaInstagram size="24px" />
+              </Link>
+              <Link href="https://twitter.com/drewharts" isExternal>
+                <FaTwitter size="24px" />
+              </Link>
+              <Link href="https://www.tiktok.com/@drewhartsss" isExternal>
+                <FaTiktok size="24px" />
+              </Link>
+            </HStack>
           </VStack>
         </ModalBody>
       </ModalContent>

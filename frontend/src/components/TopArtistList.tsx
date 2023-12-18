@@ -11,7 +11,7 @@ const ArtistList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get<ArtistResponse>('http://ec2-54-196-229-34.compute-1.amazonaws.com:3000/my-top-artists');
+        const response = await axios.get<ArtistResponse>('https://drewharts.com/api/my-top-artists');
         setData(response.data);
       } catch (err) {
         setError('Error fetching data');

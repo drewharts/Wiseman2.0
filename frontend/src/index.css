@@ -60,7 +60,7 @@ button:focus-visible {
 }
 
 .image-hover-effect:hover {
-  transform: scale(1.1); /* Adjust the scale value as needed */
+  transform: scale(1.5); /* Adjust the scale value as needed */
 }
 
 @media (prefers-color-scheme: light) {

@@ -121,6 +121,20 @@ const Homepage = () => {
                     className = 'image-hover-effect'
                     style={{ maxWidth: '350px', maxHeight: '350px' }} />
             </div>
+
+            {/* External link to my Skate video */}
+            <div onClick={() => {
+                myProjectsDisclosure.onOpen();
+                window.location.href = 'https://www.youtube.com/watch?v=otkYI5948b8';
+            }} 
+            style={{ cursor: 'pointer', position: 'absolute', top: 600, left: 500 }}>
+                <img 
+                    src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/skate.png" 
+                    alt="Logo" 
+                    className = 'image-hover-effect'
+                    style={{ maxWidth: '200px', maxHeight: '200px' }} />
+            </div>
+
             {/* External link to my medium */}
             <div onClick={() => {
                 myProjectsDisclosure.onOpen();

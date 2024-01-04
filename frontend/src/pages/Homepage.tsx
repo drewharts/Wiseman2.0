@@ -125,7 +125,7 @@ const Homepage = () => {
             {/* External link to my Skate video */}
             <div onClick={() => {
                 myProjectsDisclosure.onOpen();
-                window.location.href = 'https://www.youtube.com/watch?v=otkYI5948b8';
+                window.location.href = 'https://www.youtube.com/watch?v=XklWcpyGQt8';
             }} 
             style={{ cursor: 'pointer', position: 'absolute', top: 600, left: 500 }}>
                 <img 

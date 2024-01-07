@@ -4,11 +4,13 @@ import Photo from '../components/Photo';
 import '../index.css'
 import AboutMeModal from '../components/AboutMe';
 import SpotifyPopUp from '../components/SpotifyPopUp';
+import SkatePopUp from '../components/SkatePopUp'
 
 const Homepage = () => {
     const aboutMeDisclosure = useDisclosure();
     const spotifyDisclosure = useDisclosure();
     const myProjectsDisclosure = useDisclosure();
+    const skateDiscolsure = useDisclosure();
 
     const [isMobile] = useMediaQuery("(max-width: 768px)");
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -123,17 +125,15 @@ const Homepage = () => {
             </div>
 
             {/* External link to my Skate video */}
-            <div onClick={() => {
-                myProjectsDisclosure.onOpen();
-                window.location.href = 'https://www.youtube.com/watch?v=XklWcpyGQt8';
-            }} 
-            style={{ cursor: 'pointer', position: 'absolute', top: 600, left: 500 }}>
-                <img 
-                    src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/skate.png" 
-                    alt="Logo" 
-                    className = 'image-hover-effect'
-                    style={{ maxWidth: '200px', maxHeight: '200px' }} />
+            <div onClick={skateDiscolsure.onOpen} 
+                style={{ cursor: 'pointer', position: 'absolute', top: 600, left: 500 }}>
+            <img 
+                src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/skate.png" 
+                alt="Logo" 
+                className='image-hover-effect'
+                style={{ maxWidth: '200px', maxHeight: '200px' }} />
             </div>
+
 
             {/* External link to my medium */}
             <div onClick={() => {
@@ -164,6 +164,7 @@ const Homepage = () => {
             {/* opens and closes chakra pop ups */}
             <AboutMeModal isOpen={aboutMeDisclosure.isOpen} onClose={aboutMeDisclosure.onClose} />
             <SpotifyPopUp isOpen={spotifyDisclosure.isOpen} onClose={spotifyDisclosure.onClose} songs={[]} />
+            <SkatePopUp isOpen={skateDiscolsure.isOpen} onClose={skateDiscolsure.onClose} />
         </div>
     );
 };

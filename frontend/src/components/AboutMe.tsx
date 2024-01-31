@@ -33,7 +33,7 @@ const AboutMeModal = ({ isOpen, onClose }: AboutMeModalProps) => {
               I'm currently a senior studying Computer Science at BYU. I am also pursuing minors in Spanish and Business. 
               I skate, mostly transition which means anything that slopes. I absolutely love to cook. 
               Lately I've been especially interested in Vietnamese cuisine and fermentation. My favorite author is Walter Isaacson,
-              his Benjamin Franklin Biography impacted me tremedously.
+              his Benjamin Franklin biography impacted me tremedously.
               <br/>
               <br/>
               I find purpose in solving hard problems, and breaking tasks down to their first principles. I even wrote an article

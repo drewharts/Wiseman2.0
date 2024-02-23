@@ -5,12 +5,14 @@ import '../index.css'
 import AboutMeModal from '../components/AboutMe';
 import SpotifyPopUp from '../components/SpotifyPopUp';
 import SkatePopUp from '../components/SkatePopUp'
+import UxUi from '../components/UxUi';
 
 const Homepage = () => {
     const aboutMeDisclosure = useDisclosure();
     const spotifyDisclosure = useDisclosure();
     const myProjectsDisclosure = useDisclosure();
     const skateDiscolsure = useDisclosure();
+    const uxuiDisclosure = useDisclosure();
 
     const [isMobile] = useMediaQuery("(max-width: 768px)");
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -69,6 +71,16 @@ const Homepage = () => {
                     alt="Logo" 
                     className='image-hover-effect'
                     style={{ maxWidth: '350px', maxHeight: '350px' }} 
+                    />
+            </div>
+
+            {/* Clickable logo that takes user to ux/ui */}
+            <div onClick={uxuiDisclosure.onOpen} style={{ cursor: 'pointer', position: 'absolute', top: 500, left: 900 }}>
+                <img 
+                    src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/uxui.png" 
+                    alt="Logo" 
+                    className='image-hover-effect'
+                    style={{ maxWidth: '175px', maxHeight: '175px' }} 
                     />
             </div>
 
@@ -165,6 +177,7 @@ const Homepage = () => {
             <AboutMeModal isOpen={aboutMeDisclosure.isOpen} onClose={aboutMeDisclosure.onClose} />
             <SpotifyPopUp isOpen={spotifyDisclosure.isOpen} onClose={spotifyDisclosure.onClose} songs={[]} />
             <SkatePopUp isOpen={skateDiscolsure.isOpen} onClose={skateDiscolsure.onClose} />
+            <UxUi isOpen={uxuiDisclosure.isOpen} onClose={uxuiDisclosure.onClose} />
         </div>
     );
 };

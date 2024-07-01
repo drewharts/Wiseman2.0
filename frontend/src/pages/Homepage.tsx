@@ -3,7 +3,6 @@ import { useDisclosure, useMediaQuery } from "@chakra-ui/react";
 import Photo from '../components/Photo';
 import '../index.css'
 import AboutMeModal from '../components/AboutMe';
-import SpotifyPopUp from '../components/SpotifyPopUp';
 import SkatePopUp from '../components/SkatePopUp'
 import UxUi from '../components/UxUi';
 
@@ -98,14 +97,14 @@ const Homepage = () => {
                     <Photo urls={imageUrls} alt="Background Image" />
                 </div>
             )}
-            {/* Spotify pop up */}
+            {/* Spotify pop up
             <div onClick={spotifyDisclosure.onOpen} style={{ cursor: 'pointer', position: 'absolute', top: 200, left: 200 }}>
                 <img 
                     src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/WhatImListeningTo.png" 
                     alt="Logo" 
                     className = 'image-hover-effect'
                     style={{ maxWidth: '350px', maxHeight: '350px' }} />
-            </div>
+            </div> */}
             {/* About me tab */}
             <div onClick={aboutMeDisclosure.onOpen} style={{ cursor: 'pointer', position: 'absolute', top: 80, left: 250 }}>
                 <img 
@@ -175,7 +174,7 @@ const Homepage = () => {
             
             {/* opens and closes chakra pop ups */}
             <AboutMeModal isOpen={aboutMeDisclosure.isOpen} onClose={aboutMeDisclosure.onClose} />
-            <SpotifyPopUp isOpen={spotifyDisclosure.isOpen} onClose={spotifyDisclosure.onClose} songs={[]} />
+            {/* <SpotifyPopUp isOpen={spotifyDisclosure.isOpen} onClose={spotifyDisclosure.onClose} songs={[]} /> */}
             <SkatePopUp isOpen={skateDiscolsure.isOpen} onClose={skateDiscolsure.onClose} />
             <UxUi isOpen={uxuiDisclosure.isOpen} onClose={uxuiDisclosure.onClose} />
         </div>

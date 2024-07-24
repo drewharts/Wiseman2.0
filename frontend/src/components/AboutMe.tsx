@@ -30,7 +30,10 @@ const AboutMeModal = ({ isOpen, onClose }: AboutMeModalProps) => {
               <Image src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/AboutMePhoto.JPG" alt="Drew Hartsfield" />
             </Box>
             <Text fontSize="md">
-              I'm currently a senior studying Computer Science at BYU. I am also pursuing minors in Spanish and Business. 
+              I'm a software engineer at Reorg, a finance platform. I recently graduated BYU with a Computer Science degree and a business minor.
+              I also studied Spanish and speak fluently. I'm a deeply interested person, and I believe in being a disciple of experiment.
+              I often remind myself to produce more than I consume.
+
               I skate, mostly transition which means anything that slopes. I absolutely love to cook. 
               Lately I've been especially interested in Vietnamese cuisine and fermentation. My favorite author is Walter Isaacson,
               his Benjamin Franklin biography impacted me tremedously.

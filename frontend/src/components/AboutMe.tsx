@@ -11,7 +11,7 @@ import {
   Link,
   HStack
 } from "@chakra-ui/react";
-import {FaLinkedin, FaInstagram, FaTwitter, FaTiktok} from 'react-icons/fa'
+import {FaLinkedin, FaInstagram, FaXTwitter, FaTiktok} from 'react-icons/fa6'
 
 interface AboutMeModalProps {
     isOpen: boolean;
@@ -50,8 +50,8 @@ const AboutMeModal = ({ isOpen, onClose }: AboutMeModalProps) => {
               <Link href="https://www.instagram.com/drewhartss" isExternal>
                 <FaInstagram size="24px" />
               </Link>
-              <Link href="https://twitter.com/drewharts" isExternal>
-                <FaTwitter size="24px" />
+              <Link href="https://x.com/drewharts" isExternal>
+                <FaXTwitter size="24px" />
               </Link>
               <Link href="https://www.tiktok.com/@drewhartsss" isExternal>
                 <FaTiktok size="24px" />

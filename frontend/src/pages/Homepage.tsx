@@ -162,7 +162,7 @@ const Homepage = () => {
             {/* Allows for viewing/download of my resume from S3 bucket */}
             <div onClick={() => {
                 myProjectsDisclosure.onOpen();
-                window.open('https://s3.us-west-1.amazonaws.com/wiseman2.0images/DrewHartsfieldResumeAug2025.pdf', '_blank');
+                window.open('https://s3.us-west-1.amazonaws.com/wiseman2.0images/DrewHartsfieldResumeAug2025.docx', '_blank');
             }} 
             style={{ cursor: 'pointer', position: 'absolute', top: 500, left: 1200 }}>
                 <img 

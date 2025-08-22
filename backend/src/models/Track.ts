@@ -1,5 +1,5 @@
 import { Album } from "./Album";
-import { Artist } from "./artist";
+import { Artist } from "./Artist";
 
 export type Track = {
     album: Album;

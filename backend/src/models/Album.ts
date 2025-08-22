@@ -1,5 +1,5 @@
-import { Artist } from "./artist";
-import { Image } from "./image";
+import { Artist } from "./Artist";
+import { Image } from "./Image";
 
 export type Album = {
     album_type: string;

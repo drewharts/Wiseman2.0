@@ -1,5 +1,5 @@
 import { Track } from "../models/Track";
-import { Artist } from "../models/artist";
+import { Artist } from "../models/Artist";
 import { UserProfile } from "../models/UserProfile";
 
 export enum TimeFrame {

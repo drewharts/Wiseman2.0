@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/grid", "destination": "/grid/index.html" },
+    { "source": "/((?!grid).*)", "destination": "/" }
+  ]
+}

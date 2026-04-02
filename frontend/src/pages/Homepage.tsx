@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from 'react';
 import { useDisclosure, useMediaQuery } from "@chakra-ui/react";
+import { useNavigate } from 'react-router-dom';
 import Photo from '../components/Photo';
 import '../index.css'
 import AboutMeModal from '../components/AboutMe';
@@ -13,6 +14,7 @@ const Homepage = () => {
     const skateDiscolsure = useDisclosure();
     const uxuiDisclosure = useDisclosure();
 
+    const navigate = useNavigate();
     const [isMobile] = useMediaQuery("(max-width: 768px)");
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -172,6 +174,20 @@ const Homepage = () => {
                     style={{ maxWidth: '150px', maxHeight: '150px' }} />
             </div>
             
+            {/* HDFG link */}
+            <div onClick={() => navigate('/hdfg')}
+                style={{ cursor: 'pointer', position: 'absolute', top: 200, left: 900 }}>
+                <span className='image-hover-effect' style={{
+                    fontFamily: 'monospace',
+                    fontSize: '28px',
+                    color: 'white',
+                    letterSpacing: '8px',
+                    textShadow: '2px 2px 4px rgba(0,0,0,0.8)'
+                }}>
+                    HDFG
+                </span>
+            </div>
+
             {/* opens and closes chakra pop ups */}
             <AboutMeModal isOpen={aboutMeDisclosure.isOpen} onClose={aboutMeDisclosure.onClose} />
             {/* <SpotifyPopUp isOpen={spotifyDisclosure.isOpen} onClose={spotifyDisclosure.onClose} songs={[]} /> */}

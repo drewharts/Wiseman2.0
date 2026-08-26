@@ -1,20 +1,17 @@
 import React, {useState,useEffect} from 'react';
 import { useDisclosure, useMediaQuery } from "@chakra-ui/react";
-import { useNavigate } from 'react-router-dom';
 import Photo from '../components/Photo';
 import '../index.css'
 import AboutMeModal from '../components/AboutMe';
 import SkatePopUp from '../components/SkatePopUp'
-import UxUi from '../components/UxUi';
+
 
 const Homepage = () => {
     const aboutMeDisclosure = useDisclosure();
     // const spotifyDisclosure = useDisclosure();
     const myProjectsDisclosure = useDisclosure();
     const skateDiscolsure = useDisclosure();
-    const uxuiDisclosure = useDisclosure();
 
-    const navigate = useNavigate();
     const [isMobile] = useMediaQuery("(max-width: 768px)");
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -72,16 +69,6 @@ const Homepage = () => {
                     alt="Logo" 
                     className='image-hover-effect'
                     style={{ maxWidth: '350px', maxHeight: '350px' }} 
-                    />
-            </div>
-
-            {/* Clickable logo that takes user to ux/ui */}
-            <div onClick={uxuiDisclosure.onOpen} style={{ cursor: 'pointer', position: 'absolute', top: 500, left: 900 }}>
-                <img 
-                    src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/uxui.png" 
-                    alt="Logo" 
-                    className='image-hover-effect'
-                    style={{ maxWidth: '175px', maxHeight: '175px' }} 
                     />
             </div>
 
@@ -164,35 +151,43 @@ const Homepage = () => {
             {/* Allows for viewing/download of my resume from S3 bucket */}
             <div onClick={() => {
                 myProjectsDisclosure.onOpen();
-                window.open('https://s3.us-west-1.amazonaws.com/wiseman2.0images/DrewHartsfieldResumeAug2025.docx', '_blank');
-            }} 
+                window.open('https://s3.us-west-1.amazonaws.com/wiseman2.0images/Drew+Hartsfield+Resume+Feb+2026.pdf', '_blank');
+            }}
             style={{ cursor: 'pointer', position: 'absolute', top: 500, left: 1200 }}>
-                <img 
-                    src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/+Resume.png" 
-                    alt="Logo" 
+                <img
+                    src="https://s3.us-west-1.amazonaws.com/wiseman2.0images/+Resume.png"
+                    alt="Logo"
                     className='image-hover-effect'
                     style={{ maxWidth: '150px', maxHeight: '150px' }} />
             </div>
-            
-            {/* HDFG link */}
-            <div onClick={() => navigate('/hdfg')}
-                style={{ cursor: 'pointer', position: 'absolute', top: 200, left: 900 }}>
-                <span className='image-hover-effect' style={{
-                    fontFamily: 'monospace',
-                    fontSize: '28px',
-                    color: 'white',
-                    letterSpacing: '8px',
-                    textShadow: '2px 2px 4px rgba(0,0,0,0.8)'
-                }}>
-                    HDFG
-                </span>
+
+            {/* External link to Mesa app on App Store */}
+            <div onClick={() => {
+                window.open('https://apps.apple.com/us/app/mesa-save-places/id6740463252', '_blank');
+            }}
+            style={{ cursor: 'pointer', position: 'absolute', top: 250, left: 200 }}>
+                <img
+                    src="/mesalogo.png"
+                    alt="Mesa App"
+                    className='image-hover-effect'
+                    style={{ maxWidth: '100px', maxHeight: '100px', borderRadius: '15px' }} />
             </div>
 
+            {/* City Builder — navigates to /grid */}
+            <div onClick={() => {
+                window.location.href = '/grid';
+            }}
+            style={{ cursor: 'pointer', position: 'absolute', top: isMobile ? 500 : 150, left: isMobile ? 25 : 600 }}>
+                <div className='image-hover-effect' style={{ fontSize: '80px', lineHeight: 1, userSelect: 'none' }}>
+                    🏗️
+                </div>
+            </div>
+            
             {/* opens and closes chakra pop ups */}
             <AboutMeModal isOpen={aboutMeDisclosure.isOpen} onClose={aboutMeDisclosure.onClose} />
             {/* <SpotifyPopUp isOpen={spotifyDisclosure.isOpen} onClose={spotifyDisclosure.onClose} songs={[]} /> */}
             <SkatePopUp isOpen={skateDiscolsure.isOpen} onClose={skateDiscolsure.onClose} />
-            <UxUi isOpen={uxuiDisclosure.isOpen} onClose={uxuiDisclosure.onClose} />
+
         </div>
     );
 };

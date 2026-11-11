@@ -1,7 +1,9 @@
 import { useEffect, useId, useRef, useState } from "react";
-import "@fontsource/cormorant-garamond/latin-500.css";
-import "@fontsource/cormorant-garamond/latin-500-italic.css";
+import "@fontsource/jost/latin-500.css";
 import paperUrl from "../assets/paper.webp";
+import paperBackUrl from "../assets/paper-back.webp";
+import grainUrl from "../assets/grain.webp";
+import inkUrl from "../assets/ink.webp";
 import edgeMaskUrl from "../assets/edge-mask.png";
 
 type LinkItem = {
@@ -69,9 +71,35 @@ export default function CallingCard() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  const stock = {
+    ["--edge" as string]: `url(${edgeMaskUrl})`,
+    ["--grain" as string]: `url(${grainUrl})`,
+    ["--ink" as string]: `url(${inkUrl})`,
+  };
+  const frontStock = {
+    ...stock,
+    ["--paper" as string]: `url(${paperUrl})`,
+  };
+  const backStock = {
+    ...stock,
+    ["--paper" as string]: `url(${paperBackUrl})`,
+  };
+
   return (
     <main className="page">
-      <div className="stage">
+      <svg className="ink-defs" aria-hidden="true" width="0" height="0">
+        <filter id="ink-name" x="-8%" y="-45%" width="116%" height="190%" colorInterpolationFilters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.11" numOctaves="2" seed="4" result="tooth" />
+          <feDisplacementMap in="SourceGraphic" in2="tooth" scale="1.35" xChannelSelector="R" yChannelSelector="G" result="warped" />
+          <feGaussianBlur in="warped" stdDeviation="0.42" />
+        </filter>
+        <filter id="ink-small" x="-8%" y="-35%" width="116%" height="170%" colorInterpolationFilters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.15" numOctaves="2" seed="6" result="tooth" />
+          <feDisplacementMap in="SourceGraphic" in2="tooth" scale="0.45" xChannelSelector="R" yChannelSelector="G" result="warped" />
+          <feGaussianBlur in="warped" stdDeviation="0.18" />
+        </filter>
+      </svg>
+      <div className="stage" style={stock}>
         <div className="ground-shadow" aria-hidden="true" />
         <div className={flipped ? "flip is-flipped" : "flip"}>
           <div className="face front" aria-hidden={flipped}>
@@ -84,10 +112,7 @@ export default function CallingCard() {
               tabIndex={flipped ? -1 : 0}
               onClick={() => setFlipped(true)}
             >
-              <span
-                className="paper"
-                style={{ backgroundImage: `url(${paperUrl})`, ["--edge" as string]: `url(${edgeMaskUrl})` }}
-              />
+              <span className="paper" style={frontStock} />
               <span className="front-copy">
                 <h1 className="name">Drew Hartsfield</h1>
                 <p className="corner">Engineer, Palantir</p>
@@ -127,10 +152,7 @@ export default function CallingCard() {
               tabIndex={flipped ? 0 : -1}
               onClick={() => setFlipped(false)}
             >
-              <span
-                className="paper"
-                style={{ backgroundImage: `url(${paperUrl})`, ["--edge" as string]: `url(${edgeMaskUrl})` }}
-              />
+              <span className="paper paper-back" style={backStock} />
             </button>
           </div>
         </div>

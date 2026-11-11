@@ -2,9 +2,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import "@fontsource/jost/latin-500.css";
 import paperUrl from "../assets/paper.webp";
 import paperBackUrl from "../assets/paper-back.webp";
-import grainUrl from "../assets/grain.webp";
 import inkUrl from "../assets/ink.webp";
-import edgeMaskUrl from "../assets/edge-mask.png";
 
 type LinkItem = {
   label: string;
@@ -72,8 +70,6 @@ export default function CallingCard() {
   }, []);
 
   const stock = {
-    ["--edge" as string]: `url(${edgeMaskUrl})`,
-    ["--grain" as string]: `url(${grainUrl})`,
     ["--ink" as string]: `url(${inkUrl})`,
   };
   const frontStock = {

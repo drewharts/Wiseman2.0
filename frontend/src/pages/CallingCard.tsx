@@ -3,7 +3,6 @@ import "@fontsource/limelight/latin-400.css";
 import "@fontsource/jost/latin-500.css";
 import paperUrl from "../assets/paper.webp";
 import paperBackUrl from "../assets/paper-back.webp";
-import inkUrl from "../assets/ink.webp";
 
 type LinkItem = {
   label: string;
@@ -70,33 +69,119 @@ export default function CallingCard() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const stock = {
-    ["--ink-img" as string]: `url(${inkUrl})`,
-  };
   const frontStock = {
-    ...stock,
     ["--paper" as string]: `url(${paperUrl})`,
   };
   const backStock = {
-    ...stock,
     ["--paper" as string]: `url(${paperBackUrl})`,
   };
 
   return (
     <main className="page">
       <svg className="ink-defs" aria-hidden="true" width="0" height="0">
-        <filter id="ink-name" x="-8%" y="-45%" width="116%" height="190%" colorInterpolationFilters="sRGB">
-          <feTurbulence type="fractalNoise" baseFrequency="0.11" numOctaves="2" seed="4" result="tooth" />
-          <feDisplacementMap in="SourceGraphic" in2="tooth" scale="1.35" xChannelSelector="R" yChannelSelector="G" result="warped" />
-          <feGaussianBlur in="warped" stdDeviation="0.42" />
+        <filter id="ink-name" x="-15%" y="-80%" width="130%" height="260%" colorInterpolationFilters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.42" numOctaves="2" seed="4" result="tooth" />
+          <feDisplacementMap in="SourceGraphic" in2="tooth" scale="1.35" xChannelSelector="R" yChannelSelector="G" result="spread" />
+          <feGaussianBlur in="spread" stdDeviation="0.4" result="bled" />
+          <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="3" seed="9" result="speck" />
+          <feColorMatrix in="speck" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  1 0 0 0 0" result="speckA" />
+          <feComponentTransfer in="speckA" result="speckAlpha">
+            <feFuncA type="table" tableValues="0.25 0.72 0.9 0.97 1 1 1 1" />
+          </feComponentTransfer>
+          <feComposite in="bled" in2="speckAlpha" operator="in" result="holed" />
+          <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="2" result="wash" />
+          <feColorMatrix
+            in="wash"
+            type="matrix"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0.2 0 0 0 0.82"
+            result="washAlpha"
+          />
+          <feComposite in="holed" in2="washAlpha" operator="in" result="ink" />
+          <feColorMatrix in="ink" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="inkA" />
+          <feComponentTransfer in="inkA" result="inv">
+            <feFuncA type="table" tableValues="1 0" />
+          </feComponentTransfer>
+          <feGaussianBlur in="inv" stdDeviation="0.5" result="invBlur" />
+          <feOffset in="invBlur" dx="-0.9" dy="-0.8" result="biteOff" />
+          <feComposite in="biteOff" in2="ink" operator="in" result="biteRaw" />
+          <feColorMatrix
+            in="biteRaw"
+            type="matrix"
+            values="0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0 0.03  0 0 0 0.55 0"
+            result="bite"
+          />
+          <feOffset in="invBlur" dx="0.75" dy="0.7" result="lipOff" />
+          <feComposite in="lipOff" in2="ink" operator="in" result="lipRaw" />
+          <feColorMatrix
+            in="lipRaw"
+            type="matrix"
+            values="0 0 0 0 0.97  0 0 0 0 0.93  0 0 0 0 0.85  0 0 0 0.4 0"
+            result="lip"
+          />
+          <feMerge>
+            <feMergeNode in="ink" />
+            <feMergeNode in="bite" />
+            <feMergeNode in="lip" />
+          </feMerge>
         </filter>
-        <filter id="ink-small" x="-8%" y="-35%" width="116%" height="170%" colorInterpolationFilters="sRGB">
-          <feTurbulence type="fractalNoise" baseFrequency="0.15" numOctaves="2" seed="6" result="tooth" />
-          <feDisplacementMap in="SourceGraphic" in2="tooth" scale="0.45" xChannelSelector="R" yChannelSelector="G" result="warped" />
-          <feGaussianBlur in="warped" stdDeviation="0.18" />
+        <filter id="ink-small" x="-20%" y="-90%" width="140%" height="280%" colorInterpolationFilters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="2" seed="7" result="tooth" />
+          <feDisplacementMap in="SourceGraphic" in2="tooth" scale="0.95" xChannelSelector="R" yChannelSelector="G" result="spread" />
+          <feGaussianBlur in="spread" stdDeviation="0.5" result="bled" />
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="13" result="speck" />
+          <feColorMatrix in="speck" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  1 0 0 0 0" result="speckA" />
+          <feComponentTransfer in="speckA" result="speckAlpha">
+            <feFuncA type="table" tableValues="0.15 0.62 0.86 0.95 1 1 1 1" />
+          </feComponentTransfer>
+          <feComposite in="bled" in2="speckAlpha" operator="in" result="holed" />
+          <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="5" result="wash" />
+          <feColorMatrix
+            in="wash"
+            type="matrix"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0.24 0 0 0 0.78"
+            result="washAlpha"
+          />
+          <feComposite in="holed" in2="washAlpha" operator="in" result="ink" />
+          <feColorMatrix in="ink" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="inkA" />
+          <feComponentTransfer in="inkA" result="inv">
+            <feFuncA type="table" tableValues="1 0" />
+          </feComponentTransfer>
+          <feGaussianBlur in="inv" stdDeviation="0.32" result="invBlur" />
+          <feOffset in="invBlur" dx="-0.45" dy="-0.4" result="biteOff" />
+          <feComposite in="biteOff" in2="ink" operator="in" result="biteRaw" />
+          <feColorMatrix
+            in="biteRaw"
+            type="matrix"
+            values="0 0 0 0 0.08  0 0 0 0 0.05  0 0 0 0 0.03  0 0 0 0.45 0"
+            result="bite"
+          />
+          <feOffset in="invBlur" dx="0.4" dy="0.36" result="lipOff" />
+          <feComposite in="lipOff" in2="ink" operator="in" result="lipRaw" />
+          <feColorMatrix
+            in="lipRaw"
+            type="matrix"
+            values="0 0 0 0 0.97  0 0 0 0 0.93  0 0 0 0 0.85  0 0 0 0.32 0"
+            result="lip"
+          />
+          <feMerge>
+            <feMergeNode in="ink" />
+            <feMergeNode in="bite" />
+            <feMergeNode in="lip" />
+          </feMerge>
+        </filter>
+        <filter id="ink-rule" x="-4%" y="-400%" width="108%" height="900%" colorInterpolationFilters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.35" numOctaves="2" seed="3" result="tooth" />
+          <feDisplacementMap in="SourceGraphic" in2="tooth" scale="0.7" xChannelSelector="R" yChannelSelector="G" result="spread" />
+          <feGaussianBlur in="spread" stdDeviation="0.28" result="bled" />
+          <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="2" seed="6" result="speck" />
+          <feColorMatrix in="speck" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  1 0 0 0 0" result="speckA" />
+          <feComponentTransfer in="speckA" result="speckAlpha">
+            <feFuncA type="table" tableValues="0.2 0.65 0.88 0.96 1 1 1 1" />
+          </feComponentTransfer>
+          <feComposite in="bled" in2="speckAlpha" operator="in" />
         </filter>
       </svg>
-      <div className="stage" style={stock}>
+      <div className="stage">
         <div className="ground-shadow" aria-hidden="true" />
         <div className={flipped ? "flip is-flipped" : "flip"}>
           <div className="face front" aria-hidden={flipped}>

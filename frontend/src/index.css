@@ -2,8 +2,8 @@
   color-scheme: light;
   --font-name: "Limelight", "Didot", "Bodoni MT", serif;
   --font-small: "Jost", "Futura", "Century Gothic", sans-serif;
-  --navy: #1a3c72;
-  --vermilion: #c4472e;
+  --navy: #233056;
+  --vermilion: #c45a42;
   --cream-ink: #e7dcc8;
   --felt: #514b46;
   --ink: var(--navy);
@@ -193,6 +193,28 @@ a {
   padding: 8%;
 }
 
+.name,
+.corner,
+.role-title,
+.role-place,
+.address-col a,
+.rule,
+.addresses::before {
+  mix-blend-mode: multiply;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.name,
+.corner,
+.role-title,
+.role-place,
+.address-col a {
+  color: var(--navy);
+  -webkit-text-fill-color: var(--navy);
+  user-select: text;
+}
+
 .name {
   margin: 0;
   max-width: 96%;
@@ -204,12 +226,6 @@ a {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   white-space: nowrap;
-  color: transparent;
-  background-image: var(--ink-img, none);
-  background-size: 280px 140px;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
   filter: url(#ink-name);
 }
 
@@ -218,7 +234,7 @@ a {
   width: 22%;
   height: 1px;
   background: var(--vermilion);
-  box-shadow: 0 0 0.4px var(--vermilion);
+  filter: url(#ink-rule);
 }
 
 .corner {
@@ -230,12 +246,6 @@ a {
   text-indent: 0.28em;
   text-transform: uppercase;
   line-height: 1;
-  color: transparent;
-  background-image: var(--ink-img, none);
-  background-size: 220px 110px;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
   filter: url(#ink-small);
 }
 
@@ -257,12 +267,6 @@ a {
 .role-title,
 .role-place,
 .address-col a {
-  color: transparent;
-  background-image: var(--ink-img, none);
-  background-size: 200px 100px;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
   filter: url(#ink-small);
 }
 
@@ -288,12 +292,23 @@ a {
 }
 
 .addresses {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   gap: 1.25rem;
-  border-top: 1px solid rgba(26, 60, 114, 0.45);
-  padding-top: 0.65rem;
+  padding-top: 0.75rem;
+}
+
+.addresses::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--navy);
+  filter: url(#ink-rule);
 }
 
 .address-col {
@@ -311,9 +326,9 @@ a {
 .address-col a {
   pointer-events: auto;
   text-decoration: underline;
-  text-decoration-thickness: 0.5px;
-  text-decoration-color: rgba(26, 60, 114, 0.5);
-  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--navy);
+  text-underline-offset: 0.16em;
   font-size: clamp(0.62rem, 2.05cqw, 0.78rem);
   line-height: 1.45;
   letter-spacing: 0.14em;

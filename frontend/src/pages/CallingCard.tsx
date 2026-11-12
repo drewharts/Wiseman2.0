@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, useState } from "react";
+import "@fontsource/limelight/latin-400.css";
 import "@fontsource/jost/latin-500.css";
 import paperUrl from "../assets/paper.webp";
 import paperBackUrl from "../assets/paper-back.webp";
@@ -70,7 +71,7 @@ export default function CallingCard() {
   }, []);
 
   const stock = {
-    ["--ink" as string]: `url(${inkUrl})`,
+    ["--ink-img" as string]: `url(${inkUrl})`,
   };
   const frontStock = {
     ...stock,
@@ -111,6 +112,7 @@ export default function CallingCard() {
               <span className="paper" style={frontStock} />
               <span className="front-copy">
                 <h1 className="name">Drew Hartsfield</h1>
+                <span className="rule" aria-hidden="true" />
                 <p className="corner">Engineer, Palantir</p>
               </span>
             </button>

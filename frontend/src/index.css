@@ -1,77 +1,382 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color-scheme: light;
+  --font-name: "Limelight", "Didot", "Bodoni MT", serif;
+  --font-small: "Jost", "Futura", "Century Gothic", sans-serif;
+  --navy: #233056;
+  --vermilion: #c45a42;
+  --cream-ink: #e7dcc8;
+  --felt: #514b46;
+  --ink: var(--navy);
+  font-family: var(--font-small);
+  font-weight: 500;
+  color: var(--ink);
+  background-color: var(--felt);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+html,
 body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--felt);
+  background-image: url("./assets/felt.webp");
+  background-size: 540px 540px;
+  background-repeat: repeat;
+}
+
+button,
+a {
+  font: inherit;
+  color: inherit;
+}
+
+.ink-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.1rem, 3vh, 1.75rem);
+  padding:
+    max(1.25rem, env(safe-area-inset-top))
+    max(1rem, env(safe-area-inset-right))
+    max(1.4rem, env(safe-area-inset-bottom))
+    max(1rem, env(safe-area-inset-left));
+}
+
+.stage {
+  position: relative;
+  width: min(88vw, 640px, calc((100dvh - 8.5rem) * 1.75));
+  perspective: 1400px;
+  container-type: inline-size;
+}
+
+.ground-shadow {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  bottom: -3px;
+  height: 16%;
+  background: radial-gradient(
+    ellipse 92% 80% at 50% 0%,
+    rgba(6, 4, 3, 0.9) 0%,
+    rgba(6, 4, 3, 0.42) 40%,
+    rgba(6, 4, 3, 0) 72%
+  );
+  filter: blur(2px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.flip {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 3.5 / 2;
+  transform-style: preserve-3d;
+  transition: transform 0.75s cubic-bezier(0.62, 0.04, 0.2, 1);
+}
+
+.flip.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.face {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 4px;
+}
+
+.face.back {
+  transform: rotateY(180deg);
+}
+
+.face-hit {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: inherit;
+  -webkit-tap-highlight-color: transparent;
+  text-align: left;
+}
+
+.flip:not(.is-flipped) .face.back,
+.flip.is-flipped .face.front {
+  pointer-events: none;
+}
+
+.face-hit:focus {
+  outline: none;
+}
+
+.face-hit:focus-visible {
+  outline: 1px solid var(--cream-ink);
+  outline-offset: 5px;
+}
+
+.paper {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: #f4ead8;
+  background-image: var(--paper, none);
+  background-size: cover;
+  background-position: center;
+  box-shadow:
+    0 0 0 1px rgba(48, 32, 18, 0.28),
+    0 1px 2px rgba(8, 5, 3, 0.55);
+  pointer-events: none;
+}
+
+.front-copy,
+.back-copy {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.front-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  text-align: center;
+  padding: 8%;
+}
+
+.name,
+.corner,
+.role-title,
+.role-place,
+.address-col a,
+.rule,
+.addresses::before {
+  mix-blend-mode: multiply;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.name,
+.corner,
+.role-title,
+.role-place,
+.address-col a {
+  color: var(--navy);
+  -webkit-text-fill-color: var(--navy);
+  user-select: text;
+}
+
+.name {
+  margin: 0;
+  max-width: 96%;
+  text-align: center;
+  font-family: var(--font-name);
+  font-size: clamp(1.2rem, 6.6cqw, 2.35rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  filter: url(#ink-name);
+}
+
+.rule {
+  display: block;
+  width: 22%;
+  height: 1px;
+  background: var(--vermilion);
+  filter: url(#ink-rule);
+}
+
+.corner {
+  margin: 0;
+  font-family: var(--font-small);
+  font-size: clamp(0.58rem, 2.05cqw, 0.74rem);
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-indent: 0.28em;
+  text-transform: uppercase;
+  line-height: 1;
+  filter: url(#ink-small);
+}
+
+.back-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8.5% 8% 7.5%;
+}
+
+.role {
   margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.28em;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.role-title,
+.role-place,
+.address-col a {
+  filter: url(#ink-small);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+.role-title,
+.role-place,
+.address-col a,
+.hint {
+  font-family: var(--font-small);
+}
+
+.role-title {
+  font-size: clamp(0.62rem, 2.15cqw, 0.78rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.role-place {
+  font-size: clamp(0.68rem, 2.3cqw, 0.86rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.addresses {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.25rem;
+  padding-top: 0.75rem;
+}
+
+.addresses::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--navy);
+  filter: url(#ink-rule);
+}
+
+.address-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.22em;
+}
+
+.address-col-right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.address-col a {
+  pointer-events: auto;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--navy);
+  text-underline-offset: 0.16em;
+  font-size: clamp(0.62rem, 2.05cqw, 0.78rem);
+  line-height: 1.45;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.address-col a:hover,
+.address-col a:focus-visible {
+  text-decoration-color: var(--navy);
+}
+
+.address-col a:focus-visible {
+  outline: 1px solid var(--navy);
+  outline-offset: 3px;
+}
+
+.face.back:focus {
+  outline: none;
+}
+
+.face.back:focus-visible {
+  outline: 1px solid var(--cream-ink);
+  outline-offset: 5px;
+}
+
+.hint {
+  margin: 0;
+  font-size: 0.68rem;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  letter-spacing: 0.42em;
+  text-indent: 0.42em;
+  text-transform: uppercase;
+  color: var(--cream-ink);
+  -webkit-text-fill-color: var(--cream-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+  transform: translateZ(0);
 }
 
-.image-hover-effect {
-  transition: transform 0.3s ease-in-out;
-}
-
-.image-hover-effect:hover {
-  transform: scale(1.5); /* Adjust the scale value as needed */
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@media (prefers-reduced-motion: reduce) {
+  .flip {
+    transition: none;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+}
+
+@media (max-width: 420px) {
+  .addresses {
+    gap: 0.65rem;
   }
 }

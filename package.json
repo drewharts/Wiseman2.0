@@ -1,0 +1,10 @@
+{
+  "name": "wiseman2",
+  "private": true,
+  "engines": {
+    "node": "26.x"
+  },
+  "scripts": {
+    "build": "npm ci --prefix frontend && npm run build --prefix frontend"
+  }
+}

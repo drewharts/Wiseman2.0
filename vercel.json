@@ -4,6 +4,6 @@
   "outputDirectory": "frontend/dist",
   "rewrites": [
     { "source": "/grid", "destination": "/grid/index.html" },
-    { "source": "/(.*)", "destination": "/" }
+    { "source": "/((?!api/).*)", "destination": "/" }
   ]
 }

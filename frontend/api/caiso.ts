@@ -1,11 +1,20 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
-
 const ALLOWED_PATHS = [
   '/outlook/current/fuelsource.csv',
   '/outlook/current/demand.csv',
 ];
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+type ApiRequest = {
+  query: Record<string, string | string[] | undefined>;
+};
+
+type ApiResponse = {
+  status: (code: number) => ApiResponse;
+  json: (body: unknown) => void;
+  send: (body: string) => void;
+  setHeader: (name: string, value: string) => void;
+};
+
+export default async function handler(req: ApiRequest, res: ApiResponse) {
   const path = req.query.path as string | undefined;
   if (!path || !ALLOWED_PATHS.includes(path)) {
     return res.status(400).json({ error: 'Invalid path' });
@@ -22,7 +31,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=300');
     res.setHeader('Content-Type', 'text/csv');
     return res.status(200).send(body);
-  } catch (err) {
+  } catch {
     return res.status(502).json({ error: 'Upstream fetch failed' });
   }
 }

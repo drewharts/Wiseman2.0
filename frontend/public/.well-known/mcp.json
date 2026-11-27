@@ -1,0 +1,25 @@
+{
+  "name": "drew-hartsfield",
+  "description": "Read-only public profile of Drew Hartsfield: who he is, what he is interested in, what he has built, and which public links are already on drewharts.com. Draft wording. No login.",
+  "version": "1.0.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://drewharts.com/api/mcp"
+    }
+  ],
+  "transport": {
+    "type": "streamable-http",
+    "url": "https://drewharts.com/api/mcp"
+  },
+  "authentication": {
+    "required": false
+  },
+  "tools": [
+    "get_profile",
+    "get_interests",
+    "get_projects",
+    "how_to_contact"
+  ],
+  "instructions": "POST JSON-RPC to the remote URL. Send Content-Type: application/json and Accept: application/json, text/event-stream. The server is stateless: no Mcp-Session-Id. Responses are a single JSON body. Tools are read-only."
+}

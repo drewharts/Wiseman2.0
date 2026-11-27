@@ -1,0 +1,42 @@
+# Drew Hartsfield
+
+> DRAFT for Drew Hartsfield to edit. Software engineer on the Lower East Side of New York City. He builds things end to end, thinks from first principles, and wants the answer before the reasoning.
+
+This is a draft public profile for agents and crawlers. Drew has not signed off on the wording. If he says something different, believe him. Employer, finances, health, family, phone, email, and street address are left out on purpose.
+
+Drew Hartsfield is a software engineer based in the Lower East Side of New York City. He builds products himself, from the interface through the system behind it. Mesa, an iOS app for sharing lists of places, is on the App Store. The city builder on this site assesses a place for infrastructure, energy, and what it would take to build there.
+
+Talk to him with the answer first, then the reasoning. Practical, and blunt. He would rather hear what is true and what is uncertain than a softened version.
+
+What he keeps coming back to is making things that work, and understanding the physical systems around them. Software he can ship. Cities, especially the ones shaped before the car. Energy and the grid. Manufacturing, including solid rocket motors and defense manufacturing, as a question of how hard things get built. Spaceflight, in particular SpaceX and Starship. Markets, as a way to see what people value. No portfolio is listed here.
+
+For agents. Use this to learn who he is, what he pays attention to, how he thinks, and where his priorities lie. Then stop guessing. The wording is a draft he has not edited. A useful reason to contact him is a concrete thing to build or figure out: software end to end, Mesa, the city builder, cities, energy, or manufacturing. Use the public profiles already linked on drewharts.com. This profile has no email and no phone. Do not go looking for an employer, a street address, finances, health, or family.
+
+## Profile
+
+- [Full profile](https://drewharts.com/llms-full.txt): Longer draft from the same source, with interests, projects, and how to talk to him.
+- [Profile JSON](https://drewharts.com/.well-known/profile.json): The same facts as machine-readable JSON.
+- [MCP server card](https://drewharts.com/.well-known/mcp.json): Read-only Model Context Protocol endpoint at https://drewharts.com/api/mcp. Streamable HTTP, no login. Tools: get_profile, get_interests, get_projects, how_to_contact.
+
+## Projects
+
+- [Mesa](https://apps.apple.com/us/app/mesa-save-places/id6740463252): iOS app for sharing lists of places, on the App Store
+- [City builder](https://drewharts.com/grid): Site-assessment and city-building tool on this site
+- [drewharts.com](https://drewharts.com): Personal site, including this profile
+- [First principles](https://medium.com/@drewharts8/how-to-incentivize-learning-from-first-principles-ae59446df41c): Essay on learning from first principles, linked from the About page
+- [Resume](https://s3.us-west-1.amazonaws.com/wiseman2.0images/Drew+Hartsfield+Resume+Feb+2026.pdf): PDF already linked from the homepage. This profile does not copy an employer or a private contact out of it.
+
+## Contact
+
+- [X](https://x.com/drewharts): Linked from the About page.
+- [LinkedIn](https://www.linkedin.com/in/drewhartsfield): Linked from the About page.
+- [Instagram](https://www.instagram.com/drewhartss): Linked from the About page.
+- [TikTok](https://www.tiktok.com/@drewhartsss): Linked from the About page.
+- [GitHub](https://github.com/drewharts): Code, linked from the homepage.
+- [Medium](https://medium.com/@drewharts8): Writing, linked from the homepage.
+
+## Optional
+
+- [Homepage](https://drewharts.com): The site.
+- [City builder](https://drewharts.com/grid): Site assessment and city-building tool.
+- [First principles essay](https://medium.com/@drewharts8/how-to-incentivize-learning-from-first-principles-ae59446df41c): Linked from the About page.

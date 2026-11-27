@@ -60,6 +60,8 @@ npm run deploy       # Builds + copies output to Wiseman2.0/frontend/public/grid
 cd frontend
 npm run sync-grid    # Same thing, runs deploy in the grid repo
 ```
+**Mobile overrides:** `frontend/public/grid/grid-mobile-overrides.{css,js}` (linked from `index.html`) fix the mobile overlay layout. They live only in this repo, so port them into `power-grid-command-center` the next time the bundle is synced, or `sync-grid` may silently drop them.
+
 After syncing, commit the changes in Wiseman2.0 and push to trigger Vercel deployment.
 
 ## Deployment

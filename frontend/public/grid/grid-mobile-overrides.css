@@ -1,0 +1,72 @@
+/*
+ * Mobile layout fixes for the grid app (loaded after the main bundle CSS).
+ * Desktop (>= 640px) is intentionally unchanged: the wrapper is display:contents,
+ * so children keep their original absolute positioning.
+ * Port into power-grid-command-center on the next bundle sync.
+ */
+#map-top-stack { display: contents; }
+
+@media (max-width: 639px) {
+  #map-top-stack {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: calc(env(safe-area-inset-top, 0px) + 10px)
+             calc(env(safe-area-inset-right, 0px) + 10px) 0
+             calc(env(safe-area-inset-left, 0px) + 10px);
+    box-sizing: border-box;
+    pointer-events: none;
+  }
+  #map-top-stack > * {
+    position: relative;
+    top: auto; left: auto; right: auto; bottom: auto;
+    transform: none;
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    pointer-events: auto;
+    z-index: auto;
+  }
+  #map-top-stack > #fuel-filter-bar {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  #map-top-stack > #fuel-filter-bar::-webkit-scrollbar { display: none; }
+  #map-top-stack > #fuel-filter-bar .fuel-pill { flex: 0 0 auto; }
+  #map-top-stack > #site-assessment-toolbar .sat-btn { min-height: 44px; }
+  #map-top-stack > #site-assessment-toolbar .sat-btn-primary { flex: 1; }
+
+  /* Bottom: swatches and toggle share the bottom row; cards sit above both. */
+  #basemap-switcher {
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
+    left: calc(env(safe-area-inset-left, 0px) + 10px);
+  }
+  #sidebar-toggle.collapsed {
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
+    right: calc(env(safe-area-inset-right, 0px) + 12px);
+  }
+  #map-stat-cards {
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 84px);
+    left: 0; right: 0;
+    padding: 0 calc(env(safe-area-inset-right, 0px) + 10px) 0
+             calc(env(safe-area-inset-left, 0px) + 10px);
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  #map-stat-cards::-webkit-scrollbar { display: none; }
+  #map-stat-cards .map-stat-card {
+    flex: 0 0 auto;
+    min-width: 108px;
+    white-space: nowrap;
+  }
+}
